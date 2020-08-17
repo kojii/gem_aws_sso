@@ -16,13 +16,16 @@ gem specific_install -l https://github.com/ga-tech/gem_aws_sso.git
 aws_sso_ruby configure
 ```
 
-### Information to be filled
+- Information to be filled
+
 |Name|Detail|Example|
 |---|---|---|
 |Organization|Subdomain of your AWS SSO user portal url|`ga-tech`|
 |Profile|Name of the AWS profile which you would like to save your credentials in|`aws_sso`|
 |Region|Your AWS SSO region|`us-east-1`|
 |Client|Name of the client which you login with|`my-computer`|
+
+- Configuration file will be saved at `~/.aws_sso`
 
 ### Authorization
 ```bash
