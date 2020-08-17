@@ -21,7 +21,7 @@ aws_sso_ruby configure
 |---|---|---|
 |Organization|Subdomain of your AWS SSO user portal url|`ga-tech`|
 |Profile|Name of the AWS profile which you would like to save your credentials in|`aws_sso`|
-|region|Your AWS SSO region|`us-east-1`|
+|Region|Your AWS SSO region|`us-east-1`|
 |Client|Name of the client which you login with|`my-computer`|
 
 ### Authorization
@@ -30,7 +30,7 @@ aws_sso_ruby auth
 ```
 - You will be authorized via AWS SSO web page.
 - If you have more than one AWS accounts, you will be asked to choose one of them.
-- Your credentials will be saved in `[profile name]` you configured before under `~/.aws/credentials`, so please make sure you have installed awscli and configured it.
+- Your credentials will be saved in `[profile name]` you configured before under `~/.aws/credentials`, so please make sure you have installed [awscli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) and [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) it.
 
 ## Development
 
