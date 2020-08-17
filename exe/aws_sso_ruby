@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "aws_sso_ruby"
+
+AwsSsoRuby::CLI.start
