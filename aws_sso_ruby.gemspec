@@ -3,7 +3,7 @@ require_relative 'lib/aws_sso_ruby/version'
 Gem::Specification.new do |spec|
   spec.name          = "aws_sso_ruby"
   spec.version       = AwsSsoRuby::VERSION
-  spec.authors       = ["査炳然"]
+  spec.authors       = ["Bingran Zha"]
   spec.email         = ["h_sa@ga-tech.co.jp"]
 
   spec.summary       = "Get your AWS CLI credentials via AWS SSO"
