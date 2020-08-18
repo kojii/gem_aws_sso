@@ -2,10 +2,10 @@ PATH
   remote: .
   specs:
     aws_sso_ruby (0.1.0)
-      aws-sdk-sso
-      aws-sdk-ssooidc
-      thor
-      tty-prompt
+      aws-sdk-sso (~> 1.6)
+      aws-sdk-ssooidc (~> 1.5)
+      thor (~> 1.0)
+      tty-prompt (~> 0.22)
 
 GEM
   remote: https://rubygems.org/
