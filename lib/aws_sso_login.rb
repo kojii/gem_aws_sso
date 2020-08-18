@@ -157,7 +157,7 @@ class AwsSSO
     if target.nil?
       @credentials += "\n#{profile_text}"
     else
-      @credentials.gsub(target.compact.join("\n"), profile_text)
+      @credentials = @credentials.gsub(target.compact.join("\n"), profile_text)
     end
     @credentials = @credentials.gsub(/\n{3,}/, "\n" * 2).gsub(/\n+$/, "\n")
     File.open(aws_credential_path, 'w') do |f|
