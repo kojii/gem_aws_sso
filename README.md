@@ -12,7 +12,7 @@ gem specific_install -l https://github.com/ga-tech/gem_aws_sso.git
 ## Usage
 
 ### Configuration
-```bash
+```sh
 aws_sso_ruby configure
 ```
 
@@ -28,12 +28,53 @@ aws_sso_ruby configure
 - Configuration file will be saved at `~/.aws_sso`
 
 ### Authorization
-```bash
+```sh
 aws_sso_ruby auth
 ```
 - You will be authorized via AWS SSO web page.
 - If you have more than one AWS accounts, you will be asked to choose one of them.
 - Your credentials will be saved in `[profile name]` you configured before under `~/.aws/credentials`, so please make sure you have installed [awscli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) and [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) it.
+
+### How to use credentials(examples)
+
+- Docker Compose
+```dockerfile
+version: '3.8'
+  ・・・
+  app:
+    ...
+    environment:
+      ...
+      - AWS_PROFILE=aws_sso # ← Specify AWS profile(default: aws_sso)
+    volumes:
+      ...
+      - aws_credentials:/root/.aws  # Mount volume aws_credential to path `/root/.aws`
+volumes:
+  ...
+  aws_credentials: # Set `${HOME}/.aws` as volume `aws_credentials`
+    driver_opts:
+      type: none
+      device: ${HOME}/.aws
+      o: bind
+```
+- AWSCLI
+```sh
+aws s3 ls --profile aws_sso
+```
+- Ruby
+```ruby
+require 'aws-sdk-s3'
+
+client = Aws::S3::Client.new(profile: 'aws_sso')
+client.list_buckets.to_h
+```
+- Python
+```python
+import boto3
+
+client = boto3.session.Session(profile_name='aws_sso).client('s3')
+client.list_buckets()
+```
 
 ## Development
 
