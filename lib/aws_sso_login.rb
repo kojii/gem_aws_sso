@@ -93,6 +93,7 @@ class AwsSSO
         )
       end
     end
+    @accessable_account_roles.sort_by! { |h| h[:display_name].upcase }
   end
 
   def generate_credentials
