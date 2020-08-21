@@ -1,5 +1,9 @@
 # Release notes
 
+## 0.3.0
+- Add pagination feature for user owns more than 20 aws accounts 
+- Add pagination feature for user owns more than 20 roles in 1 aws account 
+
 ## 0.2.1
 - Sort list of AWS accounts for better user experiences.
 

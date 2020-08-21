@@ -45,16 +45,30 @@ class AwsSSO
   end
 
   def accounts
-    @sso.list_accounts(
+    accounts = []
+    data = @sso.list_accounts(
       access_token: @token.access_token
-    ).account_list
+    )
+    accounts.concat(data.account_list)
+    while data.next_page?
+      data = data.next_page
+      accounts.concat(data.account_list)
+    end
+    accounts
   end
 
   def account_roles(account_id)
-    @sso.list_account_roles(
+    role_list = []
+    data = @sso.list_account_roles(
       account_id: account_id,
       access_token: @token.access_token
-    ).role_list
+    )
+    role_list.concat(data.role_list)
+    while data.next_page?
+      data = data.next_page
+      role_list.concat(data.role_list)
+    end
+    role_list
   end
 
   def role_credentials(account_id, role_name)
