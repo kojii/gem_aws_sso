@@ -45,6 +45,7 @@ class AwsSSO
   end
 
   def accounts
+    print 'Reading AWS accounts...'
     accounts = []
     data = @sso.list_accounts(
       access_token: @token.access_token
@@ -54,10 +55,12 @@ class AwsSSO
       data = data.next_page
       accounts.concat(data.account_list)
     end
+    puts 'done!'
     accounts
   end
 
   def account_roles(account_id)
+    print 'Reading roles for each AWS accounts...'
     role_list = []
     data = @sso.list_account_roles(
       account_id: account_id,
@@ -68,6 +71,7 @@ class AwsSSO
       data = data.next_page
       role_list.concat(data.role_list)
     end
+    puts 'done!'
     role_list
   end
 
