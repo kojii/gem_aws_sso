@@ -1,5 +1,8 @@
 # Release notes
 
+## 0.3.2
+- Fix information printing error.
+
 ## 0.3.1
 - Show more information during processing.
 

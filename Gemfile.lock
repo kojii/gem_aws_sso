@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    aws_sso_ruby (0.2.1)
+    aws_sso_ruby (0.3.2)
       aws-sdk-sso (~> 1.6)
       aws-sdk-ssooidc (~> 1.5)
       thor (~> 1.0)

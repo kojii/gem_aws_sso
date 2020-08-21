@@ -46,21 +46,20 @@ class AwsSSO
 
   def accounts
     print 'Reading AWS accounts...'
-    accounts = []
+    account_list = []
     data = @sso.list_accounts(
       access_token: @token.access_token
     )
-    accounts.concat(data.account_list)
+    account_list.concat(data.account_list)
     while data.next_page?
       data = data.next_page
-      accounts.concat(data.account_list)
+      account_list.concat(data.account_list)
     end
     puts 'done!'
-    accounts
+    account_list
   end
 
   def account_roles(account_id)
-    print 'Reading roles for each AWS accounts...'
     role_list = []
     data = @sso.list_account_roles(
       account_id: account_id,
@@ -71,7 +70,6 @@ class AwsSSO
       data = data.next_page
       role_list.concat(data.role_list)
     end
-    puts 'done!'
     role_list
   end
 
@@ -99,8 +97,10 @@ class AwsSSO
       end
     end
 
-    accounts.each do |account|
+    account_list = accounts
+    account_list.each_with_index do |account, index|
       role_list = account_roles(account.account_id)
+      print "Reading roles for each AWS accounts...#{index + 1}/#{account_list.length}\r"
       role_list.each do |role|
         @accessable_account_roles.push(
           {
@@ -111,6 +111,7 @@ class AwsSSO
         )
       end
     end
+    puts
     @accessable_account_roles.sort_by! { |h| h[:display_name].upcase }
   end
 
